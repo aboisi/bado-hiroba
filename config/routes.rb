@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     #アバウトページ
     get "/about"=>"homes#about"
     #会員 [登録情報、登録情報編集、登録情報更新、退会確認、退会処理（ステータス）]
-    get 'memberss/my_page' => 'membersrs#show', as: 'my_page'
+    get 'members/my_page' => 'members#show', as: 'my_page'
     get 'members/information/edit' => 'members#edit', as: 'edit_information'
     patch 'members/information' => 'members#update', as: 'update_information'
     get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'

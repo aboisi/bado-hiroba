@@ -1,37 +1,42 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-4 offset-4">
+    <div class="col-5 offset-4">
       <div class="row">
-        <h2 class="text-center mb-3" style="font-weight:bold">Sign up</h2>
+        <h2 class="text-center mb-3" style="font-weight:bold">新規会員登録</h2>
       </div>
       
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
+        <table>
+          <tr>
+            <td class="pt-3"><%= f.label :email, "メールアドレス" %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
       
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+        <tr>
+          <td class="pt-3"><%= f.label :password, "パスワード" %><br>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上)</em>
+            <% end %>
+          </td>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+        </tr>
       
-        <div class="field">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
+        <tr>
+          <td><%= f.label :password_confirmation, "パスワード（確認用）" %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </tr>
       
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-      
-        <div class="actions">
-          <%= f.submit "Sign up" %>
-        </div>
+        <tr>
+          <td></td>
+          <td class="pt-3"><%= f.submit "新規登録", class: 'btn btn-success btn-lg', style: "wigth: 80%" %></td>
+        </tr>
+        </table>
       <% end %>
       
-      <%= render "public/shared/links" %>
+      
+      <h5 class="pt-5" style="font-weight:bold">すでに登録済みの方</h5>
+      <h5><%= render "public/shared/links" %>からログインしてください。</h5>
     </div>
   </div>
 </div>

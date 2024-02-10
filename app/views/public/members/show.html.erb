@@ -1,24 +1,25 @@
 <div class="container">
   <div class="row">
     <h2>登録情報</h2>
-  </div> 
+  </div>
   <div class="row">
     <table class="table">
       <tr>
         <th>氏名</th>
-        <th>表示名</th>
-        <th>メールアドレス</th>
+        <td><%= @member.last_name %> <%= @member.first_name%></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <th>表示名</th>
+        <td><%= @member.display_name %></td>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @member.email %></td>
       </tr>
     </table>
   </div>
   <div class="row">
     <div class="col-2 offset-5">
-      <h4>編集</h4>
+      <%= link_to "編集する", edit_information_path, class: "btn btn-success btn-lg" %>
     </div>
   </div>
 </div>

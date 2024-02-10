@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  #ログアウト
+  devise_scope :member do
+    get '/members/sign_out' => 'public/sessions#destroy'
+  end
 
   #管理者側
   namespace :admin do

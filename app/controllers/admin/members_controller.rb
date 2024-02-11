@@ -21,9 +21,9 @@ class Admin::MembersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def member_params
     params.require(:member).permit(:lastname, :first_name, :display_name, :email, :is_active)
   end

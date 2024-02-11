@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     #会員
     resources :members, only: [:index, :show, :edit, :update]
-    #グループ
-    resources :groups, only: [:new, :index, :show, :edit, :create, :update]
+    #グループ(destroyアクション以外のルーティングを生成)
+    resources :groups, except: [:destroy]
     #地域
     resources :regions, only: [:index, :edit, :create, :update]
   end

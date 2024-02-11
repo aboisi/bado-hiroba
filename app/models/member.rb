@@ -3,6 +3,15 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  has_many :group_users, dependent: :destroy
+  has_many :posts
+  has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+         
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :display_name, presence: true
 
   #会員ステータス
   def member_status

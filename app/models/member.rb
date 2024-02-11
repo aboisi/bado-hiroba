@@ -4,13 +4,18 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #trueを返すとログインできる
+  #会員ステータス
   def member_status
     if is_active == true
       "有効"
     else
       "退会"
     end
+  end
+  
+  #会員フルネーム
+  def full_name
+    self.last_name + "" + self.first_name
   end
 
   #現在のパスワードはパラメーターないで不要かつ、パスワードとパスワードの確認を空にした場合、更新されない

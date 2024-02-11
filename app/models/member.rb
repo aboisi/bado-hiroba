@@ -15,7 +15,7 @@ class Member < ApplicationRecord
   
   #会員フルネーム
   def full_name
-    self.last_name + "" + self.first_name
+    "#{self.last_name} #{self.first_name}"
   end
 
   #現在のパスワードはパラメーターないで不要かつ、パスワードとパスワードの確認を空にした場合、更新されない

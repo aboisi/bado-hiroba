@@ -44,6 +44,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :display_name])
   end
+  
+  #パスワード変更時に現在のパスワードを不要とするメソッド
+  def update_resource(resource, params)
+    resource.update_without_current_password(params) 
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get 'members/information/edit' => 'members#edit', as: 'edit_information'
     patch 'members/information' => 'members#update', as: 'update_information'
     get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
-    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
     #ポスト
     resources :posts, only: [:index, :show, :edit, :destroy, :update]
     #グループ

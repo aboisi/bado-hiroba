@@ -4,8 +4,37 @@ class Public::MembersController < ApplicationController
   end
 
   def edit
+    @member = current_member
+  end
+  
+  def update
+    @member = current_member
+    # byebug
+    if @member.update(member_params)
+      flash[:success] = "登録情報を変更しました。"
+      redirect_to my_page_path
+    else
+      render 'edit'
+    end
+  end
+  
+  def unsubscribe
   end
 
-  def unsubscribe
+  #退会処理
+  def withdraw
+    @member = current_member
+    #current_memberが持つ、is_activeカラムをfalseにして退会状態にする
+    @member.update(is_active: false)
+    #セッション情報をすべて削除
+    reset_session
+    flash[:notice] = "退会処理を実行しました。"
+    redirect_to root_path
+  end
+  
+  private
+  
+  def member_params
+    params.require(:member).permit(:last_name, :first_name, :email, :display_name, :password, :password_confirmation)
   end
 end

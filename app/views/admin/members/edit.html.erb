@@ -1,2 +1,56 @@
-<h1>Admin::Members#edit</h1>
-<p>Find me in app/views/admin/members/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto mt-5">
+      <h2 style="font-weight:bold"><%= @member.last_name %>さんの会員詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 mx-auto mt-2">
+      <%= form_with model: @member, url: admin_member_path(@member) ,method: :PATCH, local: true do |f| %>
+      <table class="table">
+        <tr>
+          <th>会員ID</th>
+          <td><%= @member.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td width="10"><%= f.label :last_name, "(姓)" %></td>
+          <td>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+          </td>
+          <td><%= f.label :first_name, "(名)" %></td>
+          <td>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+          </td>
+        </tr>
+        <tr>
+          <th>表示名</th>
+          <td width="10"></td>
+          <td>
+            <%= f.text_field :display_name, autofocus: true, autocomplete: "display_name" %>
+          </td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td width="10"></td>
+          <td>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </td>
+        </tr>
+          <th>会員ステータス</th>
+          <td></td>
+          <td>
+            <%= f.radio_button :is_active, "true" %>有効
+            <%= f.radio_button :is_active, "false" %>退会
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><%= f.submit '変更を保存', class: "btn btn-lg btn-primary btn-success" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

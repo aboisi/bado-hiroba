@@ -15,6 +15,13 @@ class Admin::RegionsController < ApplicationController
   end
 
   def edit
+    @region = Region.find(params[:id])
+  end
+  
+  def update
+    region = Region.find(params[:id])
+    region.update(region_params)
+    redirect_to admin_regions_path
   end
   
   private

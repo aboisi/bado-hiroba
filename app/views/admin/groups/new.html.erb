@@ -1,2 +1,49 @@
-<h1>Admin::Groups#new</h1>
-<p>Find me in app/views/admin/groups/new.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h2 class="text-center mb-3" style="font-weight:bold">グループ作成</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <%= form_with model: @group, local: true do |f| %>
+        <table class="table">
+          <tr>
+            <td>グループ画像</td>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+
+          <tr>
+            <td>体育館</td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+
+          <tr>
+            <td>地域</td>
+            <td><%= f.collection_select :region_id,Region.all, :id, :name, include_blank:"選択してください" %></td>
+          </tr>
+
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address %></td>
+          </tr>
+
+          <tr>
+            <td>連絡先</td>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+
+          <tr>
+            <td>紹介文</td>
+            <td><%= f.text_field :introduction %></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit '作成する', class: 'btn btn-lg btn-success' %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

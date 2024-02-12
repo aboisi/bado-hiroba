@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-6 mx-auto">
-      <%= form_with model: @group, local: true do |f| %>
+      <%= form_with model: @group, url: admin_groups_path, method: :post do |f| %>
         <table class="table">
           <tr>
             <td>グループ画像</td>
@@ -35,7 +35,7 @@
 
           <tr>
             <td>紹介文</td>
-            <td><%= f.text_field :introduction %></td>
+            <td><%= f.text_area :introduction %></td>
           </tr>
 
           <tr>

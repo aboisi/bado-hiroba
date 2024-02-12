@@ -1,2 +1,45 @@
-<h1>Admin::Groups#show</h1>
-<p>Find me in app/views/admin/groups/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <h2 style="font-weight:bold"><%= @group.name %>詳細</h2>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-4 mx-auto">
+      <%= image_tag @group.get_group_image(200,200) %>
+    </div>
+    <div class="col-6 mx-auto">
+      <table class="table">
+        <tr>
+          <th>グループID</th>
+          <td><%= @group.id %></td>
+        <tr>
+        </tr>
+          <th>体育館</th>
+          <td><%= @group.name %></td>
+        <tr>
+        </tr>
+          <th>メンバー数</th>
+          <td><%#= メンバー数 %></td>
+        <tr>
+        </tr>
+          <th>地域</th>
+          <td><%= @group.region.name %></td>
+        <tr>
+        </tr>
+          <th>住所</th>
+          <td><%= @group.address %></td>
+        <tr>
+        </tr>
+          <th>連絡先</th>
+          <td><%= @group.telephone_number %></td>
+        <tr>
+        </tr>
+      </table>
+      <div class="text-center">
+        <%=link_to "編集する",edit_admin_group_path, class:"btn btn-success mb-5" %>
+      </div>
+    </div>
+  </div>
+</div>
+

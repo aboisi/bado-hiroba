@@ -6,6 +6,7 @@ class Admin::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
+      # byebug
       redirect_to admin_group_path(@group.id)
     else
       render :new
@@ -13,11 +14,13 @@ class Admin::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.page(params[:page]).per(10)
+    # byebug
   end
 
   def show
     @group = Group.find(params[:id])
+    # byebug
   end
 
   def edit

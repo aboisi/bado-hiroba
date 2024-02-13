@@ -2,7 +2,7 @@ class Admin::GroupsController < ApplicationController
   def new
      @group = Group.new
   end
-  
+
   def create
     @group = Group.new(group_params)
     if @group.save
@@ -25,7 +25,7 @@ class Admin::GroupsController < ApplicationController
   def edit
     @group = Group.find(params[:id])
   end
-  
+
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
@@ -33,10 +33,10 @@ class Admin::GroupsController < ApplicationController
     else
       render :edit
     end
-   end
-  
+  end
+
   private
-  
+
   def group_params
     params.require(:group).permit(:name, :region_id, :address, :telephone_number, :introduction, :group_image)
   end

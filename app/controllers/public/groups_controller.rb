@@ -1,23 +1,23 @@
 class Public::GroupsController < ApplicationController
-  
-  def new
-    # @group = Group.new
-  end 
-  
-  def index
-    # @groups = Group.all
-  end 
+  before_action :authenticate_user!
   
   def show
-    # @group = Group.find(params[:id])
+    @group = Group.find(params[:id])
   end
   
-  def edit 
+  def join
+    @group = Group.find(params[:group_id])
+    @group.members << current_user
+    redirect_to group_path(@group)
   end
   
-  private
+  def destroy
+    #グループ退会
+    @group = Group.find(params[:id])
+    #current_userは、@group.usersから消されるという記述。
+    @group.members.delete(current_user)
+    redirect_to root_path
+  end
+
   
-  # def group_params
-  #   params.require(:group).permit(:name, :region_id, :address, :telephone_number, :introduction, :group_image)
-  # end
 end

@@ -46,7 +46,10 @@ Rails.application.routes.draw do
     #ポスト
     resources :posts, only: [:index, :show, :edit, :destroy, :update]
     #グループ
-    resources :groups, only: [:show]
+    resources :groups, only: [:show, :destroy] do
+      #グループ参加ルーティング
+      get "join" => "groups#join"
+    end
     #グループメンバー
     resources :group_members, only: [:index, :destroy]
     #地域

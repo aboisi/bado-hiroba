@@ -1,2 +1,37 @@
-<h1>Public::Groups#show</h1>
-<p>Find me in app/views/public/groups/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-2">
+      
+    </div>
+    <div class="col-10">
+      <div class="row ">
+        <div class="text-center" style="font-weight:bold"><%= @group.name %></div>
+      </div>
+      <div class="row">
+        <table>
+          <tr>
+            <th>所在地</th>
+            <td><%= @group.address %></td>
+          </tr>
+          <tr>
+            <th>連絡先</th>
+            <td><%= @group.telephone_number %></td>
+          </tr>
+          <tr>
+            <th>メンバー数</th>
+            <td><%= @group.members.count %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="row mt-5">
+        <% if @group.members << currentuser %>
+          <%= link_to "このグループから抜ける", group_path(@group.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当にグループを抜けますか？" %>
+        <% else %>
+          <%= link_to "このグループに入る", group_join_path(@group), class: "btn-success" %>
+        <% end %>
+      </div>
+    </div>
+    
+  </div>
+</div>
+

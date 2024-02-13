@@ -28,7 +28,7 @@
                     <%= group.name %>
                   <% end %>
                 </td>
-                <td><%#= メンバー数 %></td>
+                <td><%= group.members.count %></td>
                 <td><%= group.region.name %></td>
               </tr>
             <% end %>

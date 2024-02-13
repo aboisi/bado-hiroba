@@ -21,8 +21,6 @@ Rails.application.routes.draw do
   namespace :admin do
     #トップページ
     root to: "homes#top"
-    #検索
-    get "search" => "searches#search"
     #会員
     resources :members, only: [:index, :show, :edit, :update]
     #グループ(destroyアクション以外のルーティングを生成)
@@ -37,6 +35,10 @@ Rails.application.routes.draw do
     root to: "homes#top"
     #アバウトページ
     get "/about"=>"homes#about"
+    #検索
+    get "search" => "searches#search"
+    #地域検索
+    get 'regions/:id/search' => 'searches#region_search', as: 'region_search'
     #会員 [登録情報、登録情報編集、登録情報更新、退会確認、退会処理（ステータス）]
     get 'members/my_page' => 'members#show', as: 'my_page'
     get 'members/information/edit' => 'members#edit', as: 'edit_information'

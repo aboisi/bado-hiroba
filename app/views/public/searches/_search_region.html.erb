@@ -1,0 +1,12 @@
+<div class="genre_search">
+  <table class="table">
+    <tr>
+      <th>地域</th>
+    </tr>
+      <% Region.all.each do |region| %>
+        <tr>
+          <td><%= link_to region.name, region_search_path(region.id) %></td>
+        </tr>
+      <% end %>
+  </table>
+</div>

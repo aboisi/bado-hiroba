@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     #検索
     get "search" => "searches#search"
     #地域検索
-    get 'regions/:id/search' => 'searches#region_search', as: 'region_search'
+    get 'regions/:id/search' => 'searches#search_region', as: 'region_search'
     #会員 [登録情報、登録情報編集、登録情報更新、退会確認、退会処理（ステータス）]
     get 'members/my_page' => 'members#show', as: 'my_page'
     get 'members/information/edit' => 'members#edit', as: 'edit_information'

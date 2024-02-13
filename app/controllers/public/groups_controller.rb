@@ -1,5 +1,5 @@
 class Public::GroupsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_member!
   
   def show
     @group = Group.find(params[:id])
@@ -7,7 +7,7 @@ class Public::GroupsController < ApplicationController
   
   def join
     @group = Group.find(params[:group_id])
-    @group.members << current_user
+    @group.members << current_member
     redirect_to group_path(@group)
   end
   
@@ -15,7 +15,7 @@ class Public::GroupsController < ApplicationController
     #グループ退会
     @group = Group.find(params[:id])
     #current_userは、@group.usersから消されるという記述。
-    @group.members.delete(current_user)
+    @group.members.delete(current_member)
     redirect_to root_path
   end
 

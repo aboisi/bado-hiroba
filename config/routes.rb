@@ -45,12 +45,13 @@ Rails.application.routes.draw do
     patch 'members/information' => 'members#update', as: 'update_information'
     get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
     patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
-    #ポスト
-    resources :posts, only: [:index, :show, :edit, :destroy, :update]
+    
     #グループ
     resources :groups, only: [:show, :destroy] do
       #グループ参加ルーティング
       get "join" => "groups#join"
+      #ポスト
+      resources :posts, only: [:create, :index, :show, :edit, :destroy, :update]
     end
     #グループメンバー
     resources :group_members, only: [:index, :destroy]

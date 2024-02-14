@@ -1,6 +1,7 @@
 class Group < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :members,through: :group_users, source: :member
+  has_many :posts
   belongs_to :region
   has_one_attached :group_image
   

@@ -26,6 +26,11 @@
       <div class="row mt-5">
         <% if @group.members.include?(current_member) %>
           <%= link_to "このグループから抜ける", group_path(@group.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当にグループを抜けますか？" %>
+            <h3 style="font-weight:bold">新規投稿</h3>
+              <%= form_with model:@post, url: posts_path, method: :post do |f| %>
+                  <%= f.text_area :body, placeholder: "ここに投稿する内容を入力してください", size: "20x30" %>
+                  <%= f.submit '新規投稿', class:"btn btn-success" %>
+              <% end %>
         <% else %>
           <%= link_to "このグループに入る", group_join_path(@group), class: "btn-success" %>
         <% end %>

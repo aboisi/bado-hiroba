@@ -1,8 +1,17 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_member!
   
+  def create
+    @post = Post.new(post_params)
+    @post.member_id = current_member.id
+    if @post.save
+      flash[:notice] = "投稿しました。"
+      redirect_to controller: :posts, action: :index
+  end
+  
   def show
     @group = Group.find(params[:id])
+    @post = Post.new
   end
   
   def join

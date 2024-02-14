@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div class="row">
+    <h2 style="font-weight:bold"><%= @group.name %>の投稿一覧</h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.member.display_name %></td>
+        <td><%= post.body %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

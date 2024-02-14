@@ -1,11 +1,11 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-2">
-
+      <%= render 'public/searches/search_region' %>
     </div>
     <div class="col-10">
       <div class="row text-center">
-        <div style="font-weight:bold"><%= @group.name %></div>
+        <div style="font-size: 35px; font-weight:bold"><%= @group.name %></div>
       </div>
       <div class="row">
         <table>
@@ -18,25 +18,33 @@
             <td><%= @group.telephone_number %></td>
           </tr>
           <tr>
-            <th>メンバー数</th>
+            <th>メンバー数:</th>
             <td><%= @group.members.count %></td>
           </tr>
         </table>
       </div>
-      <div class="row mt-5">
-        <% if @group.members.include?(current_member) %>
+      <% if @group.members.include?(current_member) %>
+        <div class="row mt-3">
           <%= link_to "このグループから抜ける", group_path(@group.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当にグループを抜けますか？" %>
+        </div>
+        <div class="row mt-5">
             <h3 style="font-weight:bold">新規投稿</h3>
-              <%= form_with model:@post, url: posts_path, method: :post do |f| %>
-                  <%= f.text_area :body, placeholder: "ここに投稿する内容を入力してください", size: "20x30" %>
-                  <%= f.submit '新規投稿', class:"btn btn-success" %>
-              <% end %>
-        <% else %>
+        </div>
+        <div class="row mt-3">
+          <%= form_with model:@post, url: group_posts_path(@group), method: :post do |f| %>
+            <%= f.text_area :body, placeholder: "ここに投稿する内容を入力してください", size: "40x10" %><br>
+            <%= f.submit '新規投稿', class:"btn btn-success" %>
+          <% end %>
+        </div>
+        <div class="row mt-3">
+          <%= link_to "投稿一覧", group_posts_path(@group), class: "btn btn-success" %>
+        </div>
+      <% else %>
+        <div class="row mt-5">
           <%= link_to "このグループに入る", group_join_path(@group), class: "btn-success" %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-
   </div>
 </div>
 

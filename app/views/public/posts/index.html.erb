@@ -6,7 +6,12 @@
     <table class="table">
       <% @posts.each do |post| %>
       <tr>
-        <td><%= post.member.display_name %></td>
+        <td>プロフ</td>
+        <td>
+          <%= link_to group_post_path(post.group, post) do %>
+            <%= post.member.display_name %>
+          <% end %>
+        </td>
         <td><%= post.body %></td>
       </tr>
       <% end %>

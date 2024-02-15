@@ -1,12 +1,12 @@
 <% if post.favorited_by?(current_member) %>
   <p>
-    <%= link_to group_post_favorites_path(@group,post), method: :delete do %>
+    <%= link_to group_post_favorites_path(post.group,post), method: :delete, remote: true do %>
       ♥<%= post.favorites.count %> いいね
     <% end %>
   </p>
   <% else %>
   <p>
-    <%= link_to group_post_favorites_path(@group,post), method: :post do %>
+    <%= link_to group_post_favorites_path(post.group,post), method: :post, remote: true do %>
       ♡<%= post.favorites.count %> いいね
     <% end %>
   </p>

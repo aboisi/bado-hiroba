@@ -2,7 +2,7 @@
   table {
     border-spacing: 10px;
   }
-  
+
   td {
     padding: 10px;
   }
@@ -23,21 +23,8 @@
           <td colspan="3" style="font-size: 25px;"><%= @post.body %></td>
         </tr>
         <tr>
-          <td>
-            <% if @post.favorited_by?(current_member) %>
-              <p>
-                <%= link_to group_post_favorites_path(@group_id,@post), method: :delete do %>
-                  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                  <%= @post.favorites.count %> いいね
-                <% end %>
-              </p>
-              <% else %>
-              <p>
-                <%= link_to group_post_favorites_path(@group_id,@post), method: :post do %>
-                  ♡<%= @post.favorites.count %> いいね
-                <% end %>
-              </p>
-            <% end %>
+          <td id="favorite_buttons_<%= @post.id %>">
+            <%= render "public/favorites/favorite", post: @post %>
           </td>
         </tr>
         <tr>

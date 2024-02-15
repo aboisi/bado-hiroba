@@ -23,8 +23,10 @@
         </tr>
         <tr>
           <td><%= link_to "投稿一覧", group_posts_path(@group_id), class: "btn btn-sm btn-primary btn-success" %></td>
-          <td><%= link_to "編集", edit_group_post_path(@post), class: "btn btn-sm btn-primary btn-success" %></td>
-          <td><%= link_to "削除", group_post_path(@post),class: "btn btn-sm btn-primary btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <% if @post.member == current_member %>
+            <td><%= link_to "編集", edit_group_post_path(@post), class: "btn btn-sm btn-primary btn-success" %></td>
+            <td><%= link_to "削除", group_post_path(@post),class: "btn btn-sm btn-primary btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
         </tr>
       </table>
     </div>

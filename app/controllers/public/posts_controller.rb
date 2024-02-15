@@ -26,9 +26,19 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+    unless @post.member_id == current_member.id
+      redirect_to request.referer
+    end
   end
   
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to group_post_path(@post), notice: "編集しました。"
+    else
+      render "edit"
+    end
   end
   
   def destroy

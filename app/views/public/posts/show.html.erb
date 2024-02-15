@@ -23,6 +23,24 @@
           <td colspan="3" style="font-size: 25px;"><%= @post.body %></td>
         </tr>
         <tr>
+          <td>
+            <% if @post.favorited_by?(current_member) %>
+              <p>
+                <%= link_to group_post_favorites_path(@group_id,@post), method: :delete do %>
+                  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= @post.favorites.count %> いいね
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to group_post_favorites_path(@group_id,@post), method: :post do %>
+                  ♡<%= @post.favorites.count %> いいね
+                <% end %>
+              </p>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
           <td><%= link_to "投稿一覧", group_posts_path(@group_id), class: "btn btn-sm btn-primary btn-success" %></td>
           <% if @post.member == current_member %>
             <td><%= link_to "編集", edit_group_post_path(@post), class: "btn btn-sm btn-primary btn-success" %></td>

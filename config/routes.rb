@@ -51,16 +51,17 @@ Rails.application.routes.draw do
       #グループ参加ルーティング
       get "join" => "groups#join"
       #ポスト
-      resources :posts, only: [:create, :index, :show, :edit, :destroy, :update]
+      resources :posts, only: [:create, :index, :show, :edit, :destroy, :update] do
+        #コメント
+        resources :post_comments, only: [:create, :destroy]
+        #いいね
+        resource :favorites, only: [:create, :destroy]
+      end
     end
     #グループメンバー
     resources :group_members, only: [:index, :destroy]
     #地域
     resources :regions, only: [:index]
-    #コメント
-    resources :post_comments, only: [:create, :destroy]
-    #いいね
-    resource :favorites, only: [:create, :destroy]
   end
 
 

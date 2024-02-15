@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    @member = current_member
     @group = Group.find(params[:group_id])
     @posts = @group.posts
   end

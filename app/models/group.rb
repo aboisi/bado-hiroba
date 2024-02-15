@@ -3,7 +3,6 @@ class Group < ApplicationRecord
   has_many :members,through: :group_users, source: :member
   has_many :posts
   belongs_to :region
-  has_one_attached :group_image
   
   validates :name, presence: true
   validates :introduction, presence: true
@@ -14,6 +13,9 @@ class Group < ApplicationRecord
   def includeUser?(member)
     group_users.exists?(member_id: member.id)
   end
+  
+  #グループ画像設定
+  has_one_attached :group_image
   
   def get_group_image(width,height)
     unless group_image.attached?

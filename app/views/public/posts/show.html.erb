@@ -16,10 +16,11 @@
     <div class="col-3 mx-auto">
       <table>
         <tr>
+          <td><%= image_tag @post.member.get_profile_image(100,100) %></td>
           <td colspan="2" style="font-size: 40px; font-weight:bold"><%= @post.member.display_name %></td>
         </tr>
         <tr>
-          <td colspan="2" style="font-size: 25px;"><%= @post.body %></td>
+          <td colspan="3" style="font-size: 25px;"><%= @post.body %></td>
         </tr>
         <tr>
           <td><%= link_to "投稿一覧", group_posts_path(@group_id), class: "btn btn-sm btn-primary btn-success" %></td>

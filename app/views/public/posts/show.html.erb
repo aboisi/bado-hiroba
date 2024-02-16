@@ -37,7 +37,23 @@
       </table>
     </div>
     <div class="col-7 offset-1 mx-auto">
-      <h3 style="font-weight:bold">コメント</h3>
+      <table>
+        <tr>
+          <td id="comment_counter" style="font-size: 25px; font-weight:bold">
+            <%= render "public/post_comments/counter", post: @post %>
+          </td>
+        </tr>
+        <tr>
+          <td id="comment_index">
+            <%= render "public/post_comments/index", post: @post %>
+          </td>
+        </tr>
+        <tr>
+          <td id="comment_form">
+            <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

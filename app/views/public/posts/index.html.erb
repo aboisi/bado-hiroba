@@ -21,6 +21,9 @@
         <td id="favorite_buttons_<%= post.id %>">
           <%= render "public/favorites/favorite", post: post %>
         </td>
+        <td id="comment_counter">
+          <%= render "public/post_comments/counter", post: post %>
+        </td>
       </tr>
       <% end %>
     </table>

@@ -4,11 +4,19 @@
       <%= render 'public/searches/search_region' %>
     </div>
     <div class="col-9">
-      <h2>
-        バドひろばへようこそ！<br>
-        お近くの体育館を探してバドミントン仲間を作りましょう！
-      </h2>
-      <h4>会員でない方はグループに参加できません</h4>
+      <div class="row">
+        <h2>
+          バドひろばへようこそ！<br>
+          近くの体育館を探してバドミントン仲間を作りましょう！
+        </h2>
+        <h4>会員でない方はグループに参加できません</h4>
+      </div>
+      <div class="row mt-5">
+        <%= link_to "新規登録", new_member_registration_path, class: "btn btn-success w-50" %>
+      </div>
+      <div class="row mt-3">
+        <%= link_to "ログイン", new_member_session_path, class: "btn btn-primary w-50" %>
+      </div>
     </div>
   </div>
 </div>

@@ -33,7 +33,7 @@ class Public::PostsController < ApplicationController
       redirect_to request.referer
     end
   end
-  
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -42,7 +42,7 @@ class Public::PostsController < ApplicationController
       render "edit"
     end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     #削除された投稿が所属していたグループのIDを取得

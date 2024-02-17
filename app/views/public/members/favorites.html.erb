@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="row">
+    <h2 style="font-weight:bold">いいね一覧</h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <% @favorite_posts.each do |post|%>
+        <tr>
+          <td><%= image_tag post.member.get_profile_image(100,100) %></td>
+          <td>
+            <%= link_to group_post_path(post.group, post) do %>
+              <%= post.member.display_name %>
+            <% end %>
+          </td>
+          <td><%= post.body %></td>
+          <td id="favorite_buttons_<%= post.id %>">
+            <%= render "public/favorites/favorite", post: post %>
+          </td>
+          <td id="comment_counter">
+            <%= render "public/post_comments/counter", post: post %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

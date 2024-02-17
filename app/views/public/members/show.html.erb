@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <h2>登録情報</h2>
+    <h2 style="font-weight:bold">登録情報</h2>
   </div>
   <div class="row">
     <%= image_tag @member.get_profile_image(100,100) %>
@@ -25,10 +25,14 @@
       <%= link_to "編集する", edit_information_path, class: "btn btn-success btn-lg" %>
     </div>
   </div>
-  <div class="row">
+
+  <div class="row mt-5">
+    <p><%=link_to"お気に入り投稿",favorites_member_path(@member), class: "btn btn-warning" %></p>
+  </div>
+
+  <div class="row mt-5">
     <h2>加入グループ・マイポスト</h2>
   </div>
-  
   <% @member.groups.each do |group| %>
     <table>
       <tr>
@@ -56,11 +60,14 @@
           <td width="130" id="comment_counter">
             <%= render "public/post_comments/counter", post: post %>
           </td>
-          <td></td>
+          <% if post.member == current_member %>
+            <td width="80"><%= link_to "編集", edit_group_post_path(post.group,post), class: "btn btn-sm btn-primary btn-success" %></td>
+            <td width="80"><%= link_to "削除", group_post_path(post.group,post),class: "btn btn-sm btn-primary btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？", data: 'first-delete' %></td>
+          <% end %>
         </tr>
         <tr>
           <td colspan="2"></td>
-          <td colspan="4">
+          <td colspan="5">
             <%= link_to group_post_path(post.group, post) do %>
                 <%= post.body %>
             <% end %>

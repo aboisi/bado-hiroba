@@ -48,7 +48,12 @@ class Public::PostsController < ApplicationController
     #削除された投稿が所属していたグループのIDを取得
     @group_id = @post.group_id
     @post.destroy
-    redirect_to group_posts_path(@group_id)
+    #リダイレクト先の分岐
+    if request.referer == my_page_url
+      redirect_to my_page_path
+    else
+      redirect_to group_posts_path(@group_id)
+    end
   end
 
   private

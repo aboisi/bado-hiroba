@@ -41,6 +41,9 @@ Rails.application.routes.draw do
     get 'regions/:id/search' => 'searches#search_region', as: 'region_search'
     #いいね一覧
     resources :members do
+      collection do
+        post :guest_sign_in
+      end
       member do
         get :favorites
       end

@@ -20,11 +20,15 @@
       </tr>
     </table>
   </div>
+
+  <!--emailがguest@example.com出ない時はボタンを表示する-->
+  <% unless @member.guest_member? %>
   <div class="row">
     <div class="col-2 offset-5">
       <%= link_to "編集する", edit_information_path, class: "btn btn-success btn-lg" %>
     </div>
   </div>
+  <% end %>
 
   <div class="row mt-5">
     <p><%=link_to"お気に入り投稿",favorites_member_path(@member), class: "btn btn-warning" %></p>

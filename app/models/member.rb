@@ -43,6 +43,22 @@ class Member < ApplicationRecord
     "#{self.last_name} #{self.first_name}"
   end
 
+   #ゲストログイン
+  GUEST_MEMBER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_MEMBER_EMAIL) do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.last_name = "guest"
+      member.first_name = "user"
+      member.display_name = "guestuser"
+    end
+  end
+
+  def guest_member?
+    email == GUEST_MEMBER_EMAIL
+  end
+
   private
 
    # プロフィール画像の設定
@@ -63,20 +79,6 @@ class Member < ApplicationRecord
     ActionController::Base.helpers.asset_path("app/assets/images/no_image.jpg")
   end
 
-  #ゲストログイン
-  GUEST_MEMBER_EMAIL = "guest@example.com"
 
-  def self.guest
-    find_or_create_by!(email: GUEST_MEMBER_EMAIL) do |member|
-      member.password = SecureRandom.urlsafe_base64
-      member.last_name = "guest"
-      member.first_name = "user"
-      member.display_name = "guestuser"
-    end
-  end
-
-  def guest_member?
-    email == GUEST_MEMBER_EMAIL
-  end
 
 end

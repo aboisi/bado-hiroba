@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :groups, except: [:destroy]
     #地域
     resources :regions, only: [:index, :edit, :create, :update]
+    #投稿コメント
+    resources :post_comments, only: [:index, :destroy]
   end
 
   #会員側

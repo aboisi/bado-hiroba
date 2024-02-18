@@ -1,4 +1,6 @@
 class Admin::GroupsController < ApplicationController
+   before_action :authenticate_admin!
+  
   def new
      @group = Group.new
   end

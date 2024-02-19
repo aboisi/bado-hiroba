@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   namespace :admin do
     #トップページ
     root to: "homes#top"
+    #検索
+    get "search" => "searches#search"
     #会員
     resources :members, only: [:index, :show, :edit, :update]
     #グループ(destroyアクション以外のルーティングを生成)

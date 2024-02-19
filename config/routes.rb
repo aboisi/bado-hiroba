@@ -41,6 +41,14 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     #地域検索
     get 'regions/:id/search' => 'searches#search_region', as: 'region_search'
+
+    #会員 [登録情報、登録情報編集、登録情報更新、退会確認、退会処理（ステータス）]
+    get 'members/my_page' => 'members#show', as: 'my_page'
+    get 'members/information/edit' => 'members#edit', as: 'edit_information'
+    patch 'members/information' => 'members#update', as: 'update_information'
+    get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
+    patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
+
     #いいね一覧
     resources :members do
       collection do
@@ -50,13 +58,7 @@ Rails.application.routes.draw do
         get :favorites
       end
     end
-    #会員 [登録情報、登録情報編集、登録情報更新、退会確認、退会処理（ステータス）]
-    get 'members/my_page' => 'members#show', as: 'my_page'
-    get 'members/information/edit' => 'members#edit', as: 'edit_information'
-    patch 'members/information' => 'members#update', as: 'update_information'
-    get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
-    patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
-    
+
     #グループ
     resources :groups, only: [:show, :destroy] do
       #グループ参加ルーティング

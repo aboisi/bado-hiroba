@@ -21,6 +21,7 @@ class Public::MembersController < ApplicationController
   end
 
   def unsubscribe
+    @member = current_member
   end
 
   #退会処理
@@ -55,7 +56,7 @@ class Public::MembersController < ApplicationController
   end
 
   def ensure_guest_member
-    @member = Member.find(params[:id])
+    @member = current_member
     if @member.guest_member?
       redirect_to my_page_path , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end

@@ -58,20 +58,15 @@ class Member < ApplicationRecord
   def guest_member?
     email == GUEST_MEMBER_EMAIL
   end
-  
+
   #会員検索
   def self.looks(search, word)
     if search == "perfect_match"
-      @members = User.where("last_name = ? OR first_name = ?", word, word)
-    elsif search == "forward_match"
-      @members = User.where("last_name LIKE ? OR first_name LIKE ?", "#{word}%", "#{word}%")
-    elsif search == "backward_match"
-      @members = User.where("last_name LIKE ? OR first_name LIKE ?", "%#{word}", "%#{word}")
+      @member = Member.where("full_name LIKE?", "#{word}")
     elsif search == "partial_match"
-      @members = User.where("last_name LIKE ? OR first_name LIKE ? OR full_name LIKE ?",
-                          "%#{word}%", "%#{word}%", "%#{word}%")
+      @member = Member.where("last_name LIKE ? OR first_name LIKE ? OR full_name LIKE ?", "%#{word}%", "%#{word}%", "%#{word}%")
     else
-      @members = Member.all
+      @member = Member.none
     end
   end
 

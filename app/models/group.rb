@@ -43,7 +43,7 @@ class Group < ApplicationRecord
     when "partial_match"
       @group = Group.where("name LIKE?", "%#{word}%")
     else
-      @group = Group.all
+      @group = Group.none
     end
   end
 

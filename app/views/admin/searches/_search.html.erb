@@ -1,11 +1,9 @@
-<li class="navbar-link my-1 ml-1">
-  <div class="search-form">
-    <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word %>
-      <!--体育館と会員を検索できる-->
-      <%= f.select :range, options_for_select([['Group'],['Member']]) %>
-      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
-      <%= f.submit "検索", class: "btn btn-secondary" %>
-    <% end %>
-  </div>
-</li>
+<div class="search-form mt-3">
+  <%= form_with url: search_path, local: true, method: :get do |f| %>
+    <%= f.text_field :word %>
+    <!--体育館と会員を検索できる-->
+    <%= f.select :range, options_for_select([['Group'],['Member']]) %>
+    <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+    <%= f.submit "検索", class: "btn btn-sm btn-secondary" %>
+  <% end %>
+</div>

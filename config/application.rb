@@ -10,6 +10,9 @@ module BadoHiroba
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    
+    #MiniProfilerを削除(左上の時間)
+    config.middleware.delete(Rack::MiniProfiler)
 
     # Configuration for the application, engines, and railties goes here.
     #

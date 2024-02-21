@@ -1,5 +1,5 @@
 <div class="search-form mt-3">
-  <%= form_with url: search_path, local: true, method: :get do |f| %>
+  <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
     <%= f.text_field :word %>
     <!--体育館と会員を検索できる-->
     <%= f.select :range, options_for_select([['Group'],['Member']]) %>

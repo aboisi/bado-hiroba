@@ -60,15 +60,6 @@ class Member < ApplicationRecord
   end
 
   #会員検索
-  # def self.looks(search, word)
-  #   if search == "perfect_match"
-  #     @member = Member.where("full_name LIKE?", "#{word}")
-  #   elsif search == "partial_match"
-  #     @member = Member.where("last_name LIKE ? OR first_name LIKE ? OR full_name LIKE ?", "%#{word}%", "%#{word}%", "%#{word}%")
-  #   else
-  #     @member = Member.none
-  #   end
-  # end
   def self.looks(search, word)
     if search == "perfect_match"
       @members = Member.where("CONCAT(last_name, first_name) LIKE ?", "%#{word}%")

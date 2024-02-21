@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+header{
+background-color: #ffe4c4;
+font-size: 25px;
+}
+
+main{
+
+}
+
+.footerFixed{
+  position: relative;
+  background-color:  #ffefd5;
+  min-height: 100vh;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+}
+
+footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #ffffff;
+  background: #a0522d;
+  text-align: center;
+}

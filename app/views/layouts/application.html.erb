@@ -5,20 +5,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/b82d817675.js" crossorigin="anonymous"></script>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <main>
-      <p id="notice"><%= notice %></p>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
-    </main>
+    <div class="footerFixed">
+      <header class="shadow-sm border-bottom border-dark">
+        <%= render 'layouts/header' %>
+      </header>
+      <main>
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </main>
+      <footer>
+        <%= render 'layouts/footer' %>
+      </footer>
+    </div>
   </body>
 </html>

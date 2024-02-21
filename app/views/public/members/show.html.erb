@@ -38,9 +38,9 @@
     <h2>加入グループ・マイポスト</h2>
   </div>
   <% @member.groups.each do |group| %>
-    <table>
+    <table bgcolor="#deb887" cellpadding="15">
       <tr>
-        <td><%= image_tag group.get_group_image(100, 100) %></td>
+        <td><%= image_tag group.get_group_image(70, 70) %></td>
         <td style="font-size: 25px; font-weight:bold">
           <%= link_to group_path(group.id) do %>
             <%= group.name %>
@@ -48,29 +48,28 @@
         </td>
       </tr>
     </table>
-    <table>
+    <table bgcolor="#f5deb3" cellpadding="15" class="ml-5 mt-3">
       <% group.posts.where(member_id: @member.id).each do |post| %>
         <tr valign="middle">
-          <td width="50"></td>
-          <td width="80"><%= image_tag post.member.get_profile_image(100, 100) %></td>
-          <td width="50">
+          <td><%= image_tag post.member.get_profile_image(70, 70) %></td>
+          <td>
             <%= link_to group_post_path(post.group, post) do %>
                 <%= post.member.display_name %>
             <% end %>
           </td>
-          <td width="80" id="favorite_buttons_<%= post.id %>">
+          <td id="favorite_buttons_<%= post.id %>">
             <%= render "public/favorites/favorite", post: post %>
           </td>
-          <td width="130" id="comment_counter">
+          <td id="comment_counter">
             <%= render "public/post_comments/counter", post: post %>
           </td>
           <% if post.member == current_member %>
-            <td width="80"><%= link_to "編集", edit_group_post_path(post.group,post), class: "btn btn-sm btn-primary btn-success" %></td>
-            <td width="80"><%= link_to "削除", group_post_path(post.group,post),class: "btn btn-sm btn-primary btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？", data: 'first-delete' %></td>
+            <td><%= link_to "編集", edit_group_post_path(post.group,post), class: "btn btn-sm btn-primary btn-success" %></td>
+            <td><%= link_to "削除", group_post_path(post.group,post),class: "btn btn-sm btn-primary btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？", data: 'first-delete' %></td>
           <% end %>
         </tr>
         <tr>
-          <td colspan="2"></td>
+          <td></td>
           <td colspan="5">
             <%= link_to group_post_path(post.group, post) do %>
                 <%= post.body %>

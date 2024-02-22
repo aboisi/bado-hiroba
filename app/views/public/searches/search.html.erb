@@ -5,21 +5,21 @@
     </div>
     <div class="col-7 offset-2">
       <h3 style="font-weight:bold">検索結果</h3>
-      <% if @range == "Group" %>
-        <div class="row" style="background-color: #ffcc00;">
+      <div class="row" style="background-color: #f5deb3;">
+        <% if @range == "Group" %>
           <% @groups.each do |group| %>
             <%= link_to group_path(group.id) do %>
-              <div class="col-4">
-                <%= image_tag group.get_group_image(100,100) %>
-              </div>
-              <div class="col-8">
-                <div style="font-size: 25px; font-weight:bold"><%= group.name %></div>
-                <h4>メンバー数：<%= group.members.count %></h4>
-              </div>
+            <div class="col-4">
+              <%= image_tag group.get_group_image(100,100) %>
+            </div>
+            <div class="col-8 d-flex flex-wrap align-items-center">
+              <div style="font-size: 25px; font-weight:bold"><%= group.name %></div>
             <% end %>
+              <div style="font-size: 20px; text-align: right; flex-grow: 1;">メンバー数：<%= group.members.count %></div>
+            </div>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

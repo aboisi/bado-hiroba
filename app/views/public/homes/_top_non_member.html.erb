@@ -1,0 +1,16 @@
+<div class="row justify-content-center">
+  <h2 class="text-center">
+    バドひろばへようこそ！<br>
+    近くの体育館を探してバドミントン仲間を作りましょう！
+  </h2>
+    <h4>会員でない方はグループに参加できません</h4>
+</div>
+<div class="row justify-content-center mt-5">
+  <%= link_to "新規登録", new_member_registration_path, class: "btn btn-success w-50" %>
+</div>
+<div class="row justify-content-center mt-3">
+  <%= link_to "ログイン", new_member_session_path, class: "btn btn-primary w-50" %>
+</div>
+<div class="row justify-content-center mt-3">
+  <%= link_to "ゲストログイン(閲覧用)", guest_sign_in_members_path, class: "btn btn-secondary w-50 sign_in", method: :post %>
+</div>

@@ -13,6 +13,11 @@ module BadoHiroba
     
     #MiniProfilerを削除(左上の時間)
     config.middleware.delete(Rack::MiniProfiler)
+    
+    # 使用できる言語を文字列もしくは配列で指定する
+    I18n.config.available_locales = :ja 
+    # デフォルトのlocaleを日本語(:ja)にする
+    I18n.config.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #

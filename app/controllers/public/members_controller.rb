@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
-  before_action :ensure_guest_member, only: [:edit]
+  before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:edit, :update, :withdraw]
 
   def show
     @member = current_member
@@ -42,12 +43,7 @@ class Public::MembersController < ApplicationController
     @favorite_posts = Post.find(favorites)
   end
 
-  #ゲストログイン
-  def guest_sign_in
-    member = Member.guest
-    sign_in member
-    redirect_to root_path, notice: "guestでログインしました。"
-  end
+  
 
   private
 

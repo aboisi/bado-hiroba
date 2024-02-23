@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     get '/members/sign_out' => 'public/sessions#destroy'
   end
 
+  devise_scope :member do
+    post "members/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+
+
   #管理者側
   namespace :admin do
     #トップページ
@@ -53,9 +58,9 @@ Rails.application.routes.draw do
 
     #いいね一覧
     resources :members do
-      collection do
-        post :guest_sign_in
-      end
+      # collection do
+      #   post :guest_sign_in
+      # end
       member do
         get :favorites
       end

@@ -4,6 +4,12 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :member_state, only: [:create]
 
+  #ゲストログイン
+  def guest_sign_in
+    member = Member.guest
+    sign_in member
+    redirect_to root_path, notice: "guestでログインしました。"
+  end
   # GET /resource/sign_in
   # def new
   #   super
@@ -29,7 +35,7 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     root_path
   end
-  
+
   #ログアウト時の遷移先
   def after_sign_out_path_for(resource)
     root_path

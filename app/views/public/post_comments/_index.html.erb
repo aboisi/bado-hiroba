@@ -3,7 +3,7 @@
       <% post.post_comments.each do |post_comment| %>
       <tr>
         <td>
-          <%= image_tag post_comment.member.get_profile_image(70,70) %><br>
+          <%= image_tag post_comment.member.get_profile_image(100,100), class: "circle-image" %><br>
           <%= post_comment.member.display_name %>
         </td>
         <td><%= post_comment.comment %></td>

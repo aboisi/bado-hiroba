@@ -40,3 +40,22 @@ footer{
   background: #a0522d;
   text-align: center;
 }
+
+  .square-image {
+  width: 100px; /* 任意の幅 */
+  height: 100px; /* 任意の高さ */
+  object-fit: cover; /* 縦横比を維持しながら画像を中央に配置 */
+  }
+
+  .admin-square-image {
+  width: 200px; /* 任意の幅 */
+  height: 200px; /* 任意の高さ */
+  object-fit: cover; /* 縦横比を維持しながら画像を中央に配置 */
+  }
+
+  .circle-image {
+  width: 100px; /* 任意の幅 */
+  height: 100px; /* 任意の高さ */
+  object-fit: cover; /* 縦横比を維持しながら画像を中央に配置 */
+  border-radius: 50%; /* 画像を円形にする */
+  }

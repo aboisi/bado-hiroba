@@ -8,15 +8,12 @@
   }
 </style>
 
-
-
-
 <div class="container mt-5">
   <div class="row">
     <div class="col-3 mx-auto">
       <table>
         <tr>
-          <td><%= image_tag @post.member.get_profile_image(100,100) %></td>
+          <td><%= image_tag @post.member.get_profile_image(100,100), class: "circle-image" %></td>
           <td colspan="2" style="font-size: 40px; font-weight:bold"><%= @post.member.display_name %></td>
         </tr>
         <tr>

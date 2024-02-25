@@ -7,16 +7,18 @@
     <th class="col-1"></th>
     <th class="col-1"></th>
   </tr>
-<% @post_comments.each do |post_comment| %>
-  <tr>
-    <td class="col-2"><%= @members.find(post_comment.member_id).full_name %></td>
-    <td class="col-8"><%= post_comment.comment %></td>
-    <td class="col-1"><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
-    <td class="col-1">
-    <%= link_to '削除', admin_post_comment_path(post_comment), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
-    </td>
-  </tr>
-<% end %>
+  <% @post_comments.each do |post_comment| %>
+    <tr>
+      <td class="col-2"><%= @members.find(post_comment.member_id).full_name %></td>
+      <td class="col-8"><%= post_comment.comment %></td>
+      <td class="col-1"><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td class="col-1">
+      <%= link_to '削除', admin_post_comment_path(post_comment), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
 </table>
-
+  <div class="row justify-content-center">
+    <%= paginate @post_comments %>
+  </div>
 </div>

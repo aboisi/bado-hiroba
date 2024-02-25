@@ -39,7 +39,7 @@
     <h2>加入グループ・マイポスト</h2>
   </div>
   <% @member.groups.each do |group| %>
-    <table bgcolor="#deb887" cellpadding="15">
+    <table bgcolor="#deb887" cellpadding="15" class="mt-5">
       <tr>
         <td><%= image_tag group.get_group_image(100, 100), class: "square-image" %></td>
         <td style="font-size: 25px; font-weight:bold">
@@ -48,36 +48,46 @@
           <% end %>
         </td>
       </tr>
+      <tr>
+        <td colspan="2">
+          <a data-toggle="collapse" href="#<%= "collapse_group_#{group.id}" %>" class="text-secondary">▼</a>マイポスト
+        </td>
+      </tr>
     </table>
-    <% group.posts.where(member_id: @member.id).each do |post| %>
-      <table bgcolor="#f5deb3" cellpadding="15" class="ml-5 mt-3">
-        <tr valign="middle">
-          <td><%= image_tag post.member.get_profile_image(100, 100), class: "circle-image" %></td>
-          <td>
-            <%= link_to group_post_path(post.group, post) do %>
-                <%= post.member.display_name %>
+    <div id="<%= "collapse_group_#{group.id}" %>" class="collapse">
+      <% group.posts.where(member_id: @member.id).each do |post| %>
+        <table bgcolor="#f5deb3" cellpadding="15" class="ml-5 mt-3" id="collapse1">
+          <tr valign="middle">
+            <td class="panel-body"><%= image_tag post.member.get_profile_image(100, 100), class: "circle-image" %></td>
+            <td class="panel-body">
+              <%= link_to group_post_path(post.group, post) do %>
+                  <%= post.member.display_name %>
+              <% end %>
+            </td>
+            <td class="panel-body" id="favorite_buttons_<%= post.id %>">
+              <%= render "public/favorites/favorite", post: post %>
+            </td>
+            <td class="panel-body" id="comment_counter">
+              <%= render "public/post_comments/counter", post: post %>
+            </td>
+            <% if post.member == current_member %>
+              <td class="panel-body"><%= link_to "編集", edit_group_post_path(post.group,post), class: "btn btn-sm btn-primary btn-success" %></td>
+              <td class="panel-body"><%= link_to "削除", group_post_path(post.group,post),class: "btn btn-sm btn-primary btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？", data: 'first-delete' %></td>
             <% end %>
-          </td>
-          <td id="favorite_buttons_<%= post.id %>">
-            <%= render "public/favorites/favorite", post: post %>
-          </td>
-          <td id="comment_counter">
-            <%= render "public/post_comments/counter", post: post %>
-          </td>
-          <% if post.member == current_member %>
-            <td><%= link_to "編集", edit_group_post_path(post.group,post), class: "btn btn-sm btn-primary btn-success" %></td>
-            <td><%= link_to "削除", group_post_path(post.group,post),class: "btn btn-sm btn-primary btn-danger" , method: :delete, "data-confirm" => "本当に削除しますか？", data: 'first-delete' %></td>
-          <% end %>
-        </tr>
-        <tr>
-          <td></td>
-          <td colspan="5">
-            <%= link_to group_post_path(post.group, post) do %>
-                <%= post.body %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
-    <% end %>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="panel-body" colspan="5">
+              <%= link_to group_post_path(post.group, post) do %>
+                  <%= post.body %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
   <% end %>
+  <div class="row justify-content-center">
+    <%= paginate @activities, param_name: 'activity_page' %>
+  </div>
 </div>

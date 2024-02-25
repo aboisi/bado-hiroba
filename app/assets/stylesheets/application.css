@@ -41,21 +41,36 @@ footer{
   text-align: center;
 }
 
-  .square-image {
+.square-image {
   width: 100px; /* 任意の幅 */
   height: 100px; /* 任意の高さ */
   object-fit: cover; /* 縦横比を維持しながら画像を中央に配置 */
-  }
+}
 
-  .admin-square-image {
+.admin-square-image {
   width: 200px; /* 任意の幅 */
   height: 200px; /* 任意の高さ */
   object-fit: cover; /* 縦横比を維持しながら画像を中央に配置 */
-  }
+}
 
-  .circle-image {
+.circle-image {
   width: 100px; /* 任意の幅 */
   height: 100px; /* 任意の高さ */
   object-fit: cover; /* 縦横比を維持しながら画像を中央に配置 */
   border-radius: 50%; /* 画像を円形にする */
-  }
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+

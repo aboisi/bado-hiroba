@@ -4,6 +4,14 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = current_member
+    # @groups = @member.groups.page(params[:page]).per(5)
+    # @posts = @member.posts.page(params[:page]).per(5)
+    # @combined_list = (@member.groups + @member.posts).uniq.sort_by(&:created_at).reverse
+    # @combined_list = Kaminari.paginate_array(@combined_list).page(params[:page]).per(5)
+    # グループと投稿を結合し、作成日時で降順ソート
+    @activities = (@member.groups + @member.posts).sort_by(&:created_at).reverse
+    # 統合されたアクティビティのページネーション
+    @activities = Kaminari.paginate_array(@activities).page(params[:activity_page]).per(5)
   end
 
   def edit
@@ -43,7 +51,7 @@ class Public::MembersController < ApplicationController
     @favorite_posts = Post.find(favorites)
   end
 
-  
+
 
   private
 

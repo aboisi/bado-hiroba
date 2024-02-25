@@ -11,7 +11,7 @@ class Admin::RegionsController < ApplicationController
   
   def index
     @region = Region.new
-    @regions = Region.all
+    @regions = Region.page(params[:page]).per(10)
   end
 
   def edit

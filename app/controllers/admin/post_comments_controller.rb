@@ -1,11 +1,11 @@
 class Admin::PostCommentsController < ApplicationController
   before_action :authenticate_admin!
- 
+
   def index
-    @post_comments = PostComment.all
+    @post_comments = PostComment.page(params[:page]).per(10)
     @members = Member.all
   end
- 
+
   def destroy
    @post_comment = PostComment.find(params[:id])
    @post_comment.destroy

@@ -9,9 +9,9 @@ class Public::PostsController < ApplicationController
     @post.member_id = current_member.id
     if @post.save
       flash[:notice] = "投稿しました。"
-      redirect_to group_post_path(group_id: params[:group_id], id: @post)
+      redirect_to group_post_path(group_id: params[:group_id], id: @post.id)
     else
-      render "groups/show"
+      redirect_to group_path(@group)
     end
   end
 

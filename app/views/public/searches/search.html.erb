@@ -1,9 +1,9 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-3">
+    <div class="col-sm-3">
       <%= render 'public/searches/search_region' %>
     </div>
-    <div class="col-7 offset-2">
+    <div class="col-sm-7 offset-sm-2">
       <h3 style="font-weight:bold">検索結果</h3>
       <% if @range == "Group" %>
         <% @groups.each do |group| %>

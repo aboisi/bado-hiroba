@@ -10,12 +10,12 @@ module BadoHiroba
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-    
+
     #MiniProfilerを削除(左上の時間)
-    config.middleware.delete(Rack::MiniProfiler)
-    
+    config.middleware.delete(Rack::MiniProfiler)if Rails.env.development?
+
     # 使用できる言語を文字列もしくは配列で指定する
-    I18n.config.available_locales = :ja 
+    I18n.config.available_locales = :ja
     # デフォルトのlocaleを日本語(:ja)にする
     I18n.config.default_locale = :ja
 

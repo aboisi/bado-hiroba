@@ -4,7 +4,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = current_member
-    @groups = @member.groups.page(params[:page]).per(5)
+    @groups = @member.groups
   end
 
   def edit
@@ -39,9 +39,9 @@ class Public::MembersController < ApplicationController
 
   #いいね一覧
   def favorites
-    @member = Member.find(params[:id])
-    favorites= Favorite.where(member_id: @member.id).pluck(:post_id)
+    favorites = Favorite.where(member_id: current_member.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
+    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(10)
   end
 
 

@@ -19,6 +19,7 @@ class Public::PostsController < ApplicationController
     @member = current_member
     @group = Group.find(params[:group_id])
     @posts = @group.posts
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
   def show

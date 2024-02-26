@@ -17,7 +17,6 @@ class Admin::GroupsController < ApplicationController
 
   def index
     @groups = Group.page(params[:page]).per(10)
-    # byebug
   end
 
   def show

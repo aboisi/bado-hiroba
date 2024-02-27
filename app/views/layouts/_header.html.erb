@@ -12,7 +12,7 @@
       <% end %>
       <div class="mt-3">
         <% if member_signed_in? %>
-          <p>ようこそ<%= current_member.last_name %>さん！</p>
+          <p>ようこそ<strong><%= current_member.display_name %></strong>さん！</p>
         <% end %>
       </div>
 

@@ -12,29 +12,29 @@ Admin.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |admin|
 end
 
 tanaka = Member.find_or_create_by!(email: "tanaka@example.com") do |member|
+  member.password = "password"
   member.last_name = "田中"
   member.first_name = "太郎"
   member.display_name = "たなか"
   member.is_active = true
-  member.password = "password"
   member.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
 end
 
 sato = Member.find_or_create_by!(email: "sato@example.com") do |member|
+  member.password = "password"
   member.last_name = "佐藤"
   member.first_name = "二郎"
   member.display_name = "さとう"
   member.is_active = true
-  member.password = "password"
   member.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")
 end
 
 suzuki = Member.find_or_create_by!(email: "suzuki@example.com") do |member|
+  member.password = "password"
   member.last_name = "鈴木"
   member.first_name = "三郎"
   member.display_name = "すずき"
   member.is_active = true
-  member.password = "password"
   member.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")
 end
 

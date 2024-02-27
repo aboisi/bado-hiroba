@@ -10,26 +10,29 @@
     </div>
     <div class="col-sm-6 mx-auto">
       <table class="table">
-        </tr>
+        <tr>
           <th>体育館</th>
           <td><%= @group.name %></td>
-        <tr>
         </tr>
+        <tr>
           <th>メンバー数</th>
           <td><%= @group.members.count %></td>
-        <tr>
         </tr>
+        <tr>
           <th>地域</th>
           <td><%= @group.region.name %></td>
-        <tr>
         </tr>
+        <tr>
           <th>所在地</th>
           <td><%= @group.address %></td>
-        <tr>
         </tr>
+        <tr>
           <th>連絡先</th>
           <td><%= @group.telephone_number %></td>
+        </tr>
         <tr>
+          <th>説明</th>
+          <td><%= @group.introduction %></td>
         </tr>
       </table>
       <div class="text-center">

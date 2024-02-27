@@ -24,6 +24,10 @@
             <th>メンバー数:</th>
             <td><%= @group.members.count %></td>
           </tr>
+          <tr>
+          <th>説明</th>
+          <td><%= @group.introduction %></td>
+        </tr>
         </table>
       </div>
       <% if @group.members.include?(current_member) %>

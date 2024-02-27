@@ -25,17 +25,6 @@ class Group < ApplicationRecord
     group_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  #検索方法分岐
-  # def self.looks(search, word)
-  #   if search == "perfect_match"
-  #     @group = Group.where("name LIKE?", "#{word}")
-  #   elsif search == "partial_match"
-  #     @group = Group.where("name LIKE?", "%#{word}%")
-  #   else
-  #     @group = Group.all
-  #   end
-  # end
-
   def self.looks(search, word)
     case search
     when "perfect_match"

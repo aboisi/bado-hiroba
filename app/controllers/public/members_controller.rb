@@ -13,7 +13,6 @@ class Public::MembersController < ApplicationController
 
   def update
     @member = current_member
-    # byebug
     if @member.update(member_params)
       flash[:success] = "登録情報を変更しました。"
       redirect_to my_page_path

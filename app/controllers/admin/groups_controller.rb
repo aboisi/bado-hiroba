@@ -8,7 +8,6 @@ class Admin::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      # byebug
       redirect_to admin_group_path(@group.id)
     else
       render :new

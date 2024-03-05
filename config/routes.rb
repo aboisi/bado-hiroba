@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     post "members/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
 
+  #devise sign_up時のエラー解消
+  get "members" => redirect("/members/sign_up")
 
   #管理者側
   namespace :admin do
@@ -58,9 +60,6 @@ Rails.application.routes.draw do
 
     #いいね一覧
     resources :members do
-      # collection do
-      #   post :guest_sign_in
-      # end
       member do
         get :favorites
       end

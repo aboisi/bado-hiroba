@@ -2,9 +2,11 @@ class Group < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :members,through: :group_users, source: :member
   has_many :posts
-  belongs_to :region
 
+  #エラーメッセージの順序
+  validates :group_image, presence: true
   validates :name, presence: true
+  belongs_to :region
   validates :introduction, presence: true
   validates :address, presence: true
   validates :telephone_number, presence: true

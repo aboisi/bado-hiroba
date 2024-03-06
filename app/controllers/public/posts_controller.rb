@@ -18,7 +18,7 @@ class Public::PostsController < ApplicationController
   def index
     @member = current_member
     @group = Group.find(params[:group_id])
-    @posts = @group.posts
+    @posts = @group.posts.order(created_at: :desc)
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 

@@ -7,12 +7,15 @@
           <%= post_comment.member.display_name %>
         </td>
         <td><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= post_comment.comment %></td>
         <td>
           <% if post_comment.member == current_member %>
             <%= link_to "削除", group_post_post_comment_path(post.group,post, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger pull-right",remote: true %>
           <% end %>
         </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= simple_format(post_comment.comment, sanitize: true) %></td>
       </tr>
     <% end %>
   </tbody>

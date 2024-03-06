@@ -18,6 +18,7 @@
           <% end %>
         </td>
         <td><%= post.body %></td>
+        <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
         <td id="favorite_buttons_<%= post.id %>">
           <%= render "public/favorites/favorite", post: post %>
         </td>

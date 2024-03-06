@@ -6,7 +6,7 @@
           <%= image_tag post_comment.member.get_profile_image(100,100), class: "circle-image" %><br>
           <%= post_comment.member.display_name %>
         </td>
-        <td><%= post_comment.created_at.strftime('%Y/%m/%d/%H/%M') %></td>
+        <td><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= post_comment.comment %></td>
         <td>
           <% if post_comment.member == current_member %>

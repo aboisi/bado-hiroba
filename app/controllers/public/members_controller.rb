@@ -40,7 +40,7 @@ class Public::MembersController < ApplicationController
   def favorites
     @groups = current_member.groups
     favorites = Favorite.where(member_id: current_member.id).pluck(:post_id)
-    @favorite_posts = Post.includes(:group, :member).where(id: favorites)
+    @favorite_posts = Post.includes(:group, :member).where(id: favorites).order(created_at: :desc)
     # 自分が加入しているグループの投稿のみ表示
     @favorite_posts = @favorite_posts.select { |post| @groups.include?(post.group) }
     @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(10)
